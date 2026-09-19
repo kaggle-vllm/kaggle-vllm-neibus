@@ -1,0 +1,9 @@
+kaggle-vllm-nebius
+
+This repository is an independent open-source hackathon project.
+
+Nebius, NVIDIA, Kaggle, vLLM, Qwen, and other names may be trademarks of their
+respective owners. Their use here does not imply endorsement.
+
+The project calls Nebius Token Factory and NVIDIA open model services but does
+not redistribute those model weights.

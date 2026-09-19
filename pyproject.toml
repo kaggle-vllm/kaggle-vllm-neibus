@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kaggle-vllm-nebius"
+version = "0.1.0"
+description = "Evidence-driven NVIDIA GPU inference diagnostics powered by Nemotron on Nebius Token Factory."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+authors = [{name = "kaggle-vllm contributors"}]
+dependencies = [
+  "openai>=2.38,<3",
+  "pydantic>=2.11,<3",
+  "python-dotenv>=1.1,<2",
+  "fastapi>=0.116,<1",
+  "uvicorn>=0.35,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4,<9",
+  "ruff>=0.12,<1",
+  "httpx>=0.28,<1",
+]
+
+[project.scripts]
+kaggle-vllm-nebius = "kaggle_vllm_nebius.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

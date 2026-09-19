@@ -1,0 +1,1 @@
+See docs/architecture.md and README.md. This file is retained as a pointer only.

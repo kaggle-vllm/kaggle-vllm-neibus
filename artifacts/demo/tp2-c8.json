@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "provenance": {
+    "project": "kaggle-vllm",
+    "project_version": "0.2.0",
+    "git_commit": null,
+    "timestamp": null
+  },
+  "environment": {
+    "platform": "Kaggle Notebook",
+    "python_version": "3.12.13",
+    "pytorch_version": "2.10.0+cu128",
+    "cuda_version": "12.8",
+    "vllm_version": "0.18.1 source baseline",
+    "driver_version": "580.159.04"
+  },
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA Tesla T4",
+      "compute_capability": "7.5",
+      "memory_mib": 15360
+    },
+    {
+      "index": 1,
+      "name": "NVIDIA Tesla T4",
+      "compute_capability": "7.5",
+      "memory_mib": 15360
+    }
+  ],
+  "model": {
+    "model_id": "facebook/opt-125m",
+    "revision": null,
+    "dtype": "float16"
+  },
+  "workload": {
+    "concurrency": 8,
+    "input_tokens": null,
+    "output_tokens": null,
+    "request_count": null
+  },
+  "gpu_metrics": {
+    "avg_utilization_pct": null,
+    "peak_memory_mib": null,
+    "avg_power_watts": null
+  },
+  "errors": [],
+  "notes": [
+    "Illustrative starter fixture. Replace numeric metrics with checksummed raw values from the real kaggle-vllm benchmark artifacts before submission."
+  ],
+  "run_id": "demo-opt125m-tp2-c8",
+  "runtime": {
+    "tensor_parallel_size": 2,
+    "attention_backend": "TRITON_ATTN",
+    "enforce_eager": true,
+    "disable_custom_all_reduce": true,
+    "max_model_len": 512,
+    "gpu_memory_utilization": 0.4
+  },
+  "metrics": {
+    "request_throughput_rps": 7.5,
+    "output_tokens_per_second": 75.0,
+    "ttft_p50_ms": 36.0,
+    "ttft_p95_ms": 55.0,
+    "tpot_p50_ms": 15.0,
+    "tpot_p95_ms": 19.0
+  }
+}
