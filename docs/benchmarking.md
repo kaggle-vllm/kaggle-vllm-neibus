@@ -15,3 +15,14 @@ Primary demonstration:
 - GPU utilization and VRAM where collected.
 
 Avoid claiming a single root cause unless a dedicated experiment isolates it.
+
+`compare_matrix` pairs TP=1 and TP=2 at each concurrency, validates model
+identity, and calculates the first measured benefit rather than hardcoding a
+crossover. For throughput metrics it also reports the diagnostic ratio:
+
+```text
+TP scaling efficiency = TP2 throughput / (2 × TP1 throughput)
+```
+
+This ratio is useful for this controlled comparison but is not presented as the
+only universal scaling-efficiency definition.

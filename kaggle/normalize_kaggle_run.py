@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Create a normalized EvidenceBundle from known benchmark values.
+"""Development-only manual EvidenceBundle builder.
 
-This script is deliberately explicit: it does not guess field names from
-arbitrary benchmark JSON. Keep the raw kaggle-vllm artifact and enter only
-values actually present in that artifact.
+Production imports must use ``kaggle-vllm-nebius import-kaggle-run`` so the raw
+source is validated, preserved, and checksummed. This compatibility script is
+kept only for older examples that do not have a supported raw source artifact.
 """
 
 from __future__ import annotations

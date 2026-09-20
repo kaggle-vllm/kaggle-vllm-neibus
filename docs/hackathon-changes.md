@@ -19,7 +19,13 @@ The hackathon project adds:
 - audit trails for model and tool actions;
 - an API/CLI for diagnosis and run inspection;
 - a closed-loop design for measuring, recommending, rerunning, and verifying
-  inference configurations.
+  inference configurations;
+- a strict adapter from real `kaggle-vllm-serving-benchmark-v1` artifacts;
+- raw-artifact SHA256 provenance and public evidence cataloging;
+- deterministic matrix crossover and TP scaling-efficiency analysis;
+- objective/constraint-aware `PASS` / `FAIL` / `INCONCLUSIVE` verification;
+- SQLite persistence for runs, diagnoses, recommendations, and verification;
+- offline CI and expanded adapter/API/policy/agent tests.
 
 The original `kaggle-vllm` repository remains an independent runtime dependency
 rather than the hackathon submission itself.

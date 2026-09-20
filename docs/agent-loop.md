@@ -8,4 +8,10 @@
 6. Nemotron emits one `DiagnosisReport` JSON object.
 7. Pydantic validates it.
 8. The deterministic policy validates any proposed experiment.
-9. A later Kaggle run verifies the recommendation with measured evidence.
+9. A later controlled run is imported as measured evidence.
+10. Python evaluates every declared verification metric and constraint.
+11. A typed `VerificationReport` records `PASS`, `FAIL`, or `INCONCLUSIVE`.
+
+Optimization mode requires either a non-empty, policy-checkable
+`ExperimentSpec` or a specific `insufficient_evidence` explanation. It does not
+force a fabricated recommendation.
