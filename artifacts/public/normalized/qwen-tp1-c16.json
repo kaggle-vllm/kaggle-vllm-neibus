@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "run_id": "qwen-tp1-c16",
+  "provenance": {
+    "project": "kaggle-vllm",
+    "project_version": "0.2.0",
+    "git_commit": null,
+    "timestamp": "2026-09-03T16:48:50.416102Z",
+    "source_schema": "kaggle-vllm-serving-benchmark-v1",
+    "source_filename": "qwen-tp1-c16.json",
+    "source_sha256": "93fad98e05927f54fbaca703fd90d1d556fd32322b5360c56817c77782c31fe0",
+    "source_repository": "https://github.com/kaggle-vllm/kaggle-vllm",
+    "source_commit": "6ae0298fe0982e5a67a35e104868395e9cb3005d",
+    "source_created_at": "2026-09-03T16:48:50.416102Z"
+  },
+  "environment": {
+    "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+    "python_version": "3.12.13",
+    "pytorch_version": "2.10.0+cu128",
+    "cuda_version": "12.8",
+    "vllm_version": "0.18.2.dev0+ga26e8dc7f.d20260822.cu128",
+    "driver_version": "580.159.04",
+    "nccl_version": "2.27.5",
+    "runtime_wheel": "vllm-0.18.2.dev0+ga26e8dc7f.d20260822.cu128-cp312-cp312-linux_x86_64.whl",
+    "runtime_wheel_sha256": "5a9bd710b8a19fdd23abb3442baad892da977466f996334decd533a225f5fd0c",
+    "runtime_revision": "f6b4f10de54924ed6fe9e28cceab84eca7276ab6",
+    "topology_link": "PHB",
+    "nvlink_observed": false
+  },
+  "gpus": [
+    {
+      "index": 0,
+      "name": "Tesla T4",
+      "compute_capability": "7.5",
+      "memory_mib": 14912
+    },
+    {
+      "index": 1,
+      "name": "Tesla T4",
+      "compute_capability": "7.5",
+      "memory_mib": 14912
+    }
+  ],
+  "model": {
+    "model_id": "Qwen/Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "dtype": "float16",
+    "served_name": "qwen2.5-3b-instruct",
+    "source": "/kaggle/working/kaggle-vllm-milestone-2-work/model-cache/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1"
+  },
+  "runtime": {
+    "tensor_parallel_size": 1,
+    "attention_backend": null,
+    "enforce_eager": true,
+    "disable_custom_all_reduce": true,
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.9
+  },
+  "workload": {
+    "concurrency": 16,
+    "input_tokens": 101664,
+    "output_tokens": 24576,
+    "request_count": 48,
+    "successful_requests": 48,
+    "failed_requests": 0
+  },
+  "metrics": {
+    "request_throughput_rps": 0.2709950140012638,
+    "output_tokens_per_second": 138.74944716864707,
+    "ttft_p50_ms": 5845.826123000279,
+    "ttft_p95_ms": 21905.747577000056,
+    "tpot_p50_ms": 103.16135814677104,
+    "tpot_p95_ms": 108.59214394716248
+  },
+  "gpu_metrics": {
+    "avg_utilization_pct": 99.89396709323583,
+    "peak_memory_mib": 13731.0,
+    "avg_power_watts": null,
+    "per_gpu": [
+      {
+        "index": 0,
+        "sample_count": 547,
+        "avg_utilization_pct": 99.89396709323583,
+        "peak_utilization_pct": 100.0,
+        "peak_memory_mib": 13731.0,
+        "peak_power_watts": 81.01
+      },
+      {
+        "index": 1,
+        "sample_count": 547,
+        "avg_utilization_pct": 0.0,
+        "peak_utilization_pct": 0.0,
+        "peak_memory_mib": 3.0,
+        "peak_power_watts": 12.24
+      }
+    ]
+  },
+  "request_distribution": {
+    "input_tokens": {
+      "count": 48,
+      "minimum": 2115.0,
+      "maximum": 2122.0,
+      "mean": 2118.0,
+      "p50": 2117.0,
+      "p95": 2122.0,
+      "p99": 2122.0
+    },
+    "output_tokens": {
+      "count": 48,
+      "minimum": 512.0,
+      "maximum": 512.0,
+      "mean": 512.0,
+      "p50": 512.0,
+      "p95": 512.0,
+      "p99": 512.0
+    },
+    "latency_ms": {
+      "count": 48,
+      "minimum": 40522.03149399975,
+      "maximum": 77538.45194399991,
+      "mean": 58880.34183579166,
+      "p50": 58907.4018299998,
+      "p95": 74623.06286400008,
+      "p99": 77538.45194399991
+    }
+  },
+  "errors": [],
+  "notes": [
+    "Sampled nvidia-smi telemetry can miss instantaneous memory peaks.",
+    "Two T4 devices are separate GPUs, not one fungible 30 GB device.",
+    "Client timestamps include loopback HTTP and scheduling effects.",
+    "A throughput change alone is not evidence of CUDA OOM or KV-cache swapping.",
+    "Results apply only to the recorded model, workload, engine, and runtime."
+  ]
+}

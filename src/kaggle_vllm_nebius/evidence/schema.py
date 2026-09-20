@@ -15,6 +15,12 @@ class Provenance(StrictModel):
     project_version: str
     git_commit: str | None = None
     timestamp: datetime | None = None
+    source_schema: str | None = None
+    source_filename: str | None = None
+    source_sha256: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
+    source_repository: str | None = None
+    source_commit: str | None = None
+    source_created_at: datetime | None = None
 
 
 class GPUInfo(StrictModel):
@@ -31,12 +37,20 @@ class EnvironmentInfo(StrictModel):
     cuda_version: str | None = None
     vllm_version: str | None = None
     driver_version: str | None = None
+    nccl_version: str | None = None
+    runtime_wheel: str | None = None
+    runtime_wheel_sha256: str | None = None
+    runtime_revision: str | None = None
+    topology_link: str | None = None
+    nvlink_observed: bool | None = None
 
 
 class ModelInfo(StrictModel):
     model_id: str
     revision: str | None = None
     dtype: str | None = None
+    served_name: str | None = None
+    source: str | None = None
 
 
 class RuntimeInfo(StrictModel):
@@ -53,6 +67,24 @@ class WorkloadInfo(StrictModel):
     input_tokens: int | None = Field(default=None, ge=0)
     output_tokens: int | None = Field(default=None, ge=0)
     request_count: int | None = Field(default=None, ge=1)
+    successful_requests: int | None = Field(default=None, ge=0)
+    failed_requests: int | None = Field(default=None, ge=0)
+
+
+class DistributionStats(StrictModel):
+    count: int = Field(ge=0)
+    minimum: float | None = Field(default=None, ge=0)
+    maximum: float | None = Field(default=None, ge=0)
+    mean: float | None = Field(default=None, ge=0)
+    p50: float | None = Field(default=None, ge=0)
+    p95: float | None = Field(default=None, ge=0)
+    p99: float | None = Field(default=None, ge=0)
+
+
+class RequestDistribution(StrictModel):
+    input_tokens: DistributionStats | None = None
+    output_tokens: DistributionStats | None = None
+    latency_ms: DistributionStats | None = None
 
 
 class PerformanceMetrics(StrictModel):
@@ -68,6 +100,16 @@ class GPUMetrics(StrictModel):
     avg_utilization_pct: float | None = Field(default=None, ge=0, le=100)
     peak_memory_mib: float | None = Field(default=None, ge=0)
     avg_power_watts: float | None = Field(default=None, ge=0)
+    per_gpu: list[GPUDeviceMetrics] = Field(default_factory=list)
+
+
+class GPUDeviceMetrics(StrictModel):
+    index: int = Field(ge=0)
+    sample_count: int = Field(ge=0)
+    avg_utilization_pct: float | None = Field(default=None, ge=0, le=100)
+    peak_utilization_pct: float | None = Field(default=None, ge=0, le=100)
+    peak_memory_mib: float | None = Field(default=None, ge=0)
+    peak_power_watts: float | None = Field(default=None, ge=0)
 
 
 class EvidenceBundle(StrictModel):
@@ -81,6 +123,7 @@ class EvidenceBundle(StrictModel):
     workload: WorkloadInfo
     metrics: PerformanceMetrics
     gpu_metrics: GPUMetrics = Field(default_factory=GPUMetrics)
+    request_distribution: RequestDistribution | None = None
     errors: list[str] = Field(default_factory=list)
     notes: list[str] = Field(default_factory=list)
 

@@ -26,5 +26,5 @@ def load_settings() -> Settings:
             "NEBIUS_MODEL",
             "nvidia/Nemotron-3_5-Lightning",
         ),
-        max_agent_turns=int(os.getenv("NEBIUS_MAX_AGENT_TURNS", "8")),
+        max_agent_turns=int(os.getenv("NEBIUS_MAX_AGENT_TURNS", "12")),
     )
